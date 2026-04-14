@@ -1,0 +1,51 @@
+# Xcode
+*.xcodeproj/
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+*.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+*.xcuserdata/
+*.xcscmblueprint
+*.playground/
+DerivedData/
+build/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+Packages/*/Package.resolved
+
+# CocoaPods (in case)
+Pods/
+
+# macOS
+.DS_Store
+*.swp
+*~
+._*
+
+# Xcode generated
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+
+# App archives
+*.ipa
+*.xcarchive
+
+# Data files (large, downloaded separately)
+Data/JMdict/*.xml
+Data/JMdict/*.gz
+Data/JMdict/*.db
+Data/JMdict/*.sqlite
+
+# Environment / secrets
+.env
+*.key
+*.pem

@@ -1,0 +1,78 @@
+name: LanguageLens
+options:
+  bundleIdPrefix: com.languagelens
+  deploymentTarget:
+    iOS: "17.0"
+  groupSortPosition: top
+  generateEmptyDirectories: true
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+
+packages:
+  SharedModels:
+    path: Packages/SharedModels
+  CaptureKit:
+    path: Packages/CaptureKit
+  DecodeKit:
+    path: Packages/DecodeKit
+  DisplayKit:
+    path: Packages/DisplayKit
+  ContextEngine:
+    path: Packages/ContextEngine
+  MemoryKit:
+    path: Packages/MemoryKit
+
+targets:
+  LanguageLens:
+    type: application
+    platform: iOS
+    sources:
+      - path: App/LanguageLens
+        excludes:
+          - Resources
+    resources:
+      - path: App/LanguageLens/Resources/Assets.xcassets
+    dependencies:
+      - package: SharedModels
+      - package: CaptureKit
+      - package: DecodeKit
+      - package: DisplayKit
+      - package: ContextEngine
+      - package: MemoryKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.languagelens.app
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: 1
+        INFOPLIST_FILE: App/LanguageLens/Info.plist
+        CODE_SIGN_STYLE: Automatic
+    info:
+      path: App/LanguageLens/Info.plist
+      properties:
+        CFBundleName: LanguageLens
+        CFBundleDisplayName: LanguageLens
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        UILaunchScreen: {}
+        NSCameraUsageDescription: >-
+          LanguageLens uses the camera to recognize and decode text in real time.
+        NSLocationWhenInUseUsageDescription: >-
+          LanguageLens uses your location to suggest contextually relevant phrases
+          and remember where you encountered text.
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+
+  LanguageLensTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - Tests
+    dependencies:
+      - target: LanguageLens
+      - package: SharedModels
+      - package: DecodeKit
+      - package: MemoryKit
